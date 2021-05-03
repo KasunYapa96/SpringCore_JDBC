@@ -1,5 +1,7 @@
 package com.kasunyapa.main;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,7 +18,7 @@ public class Main {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		EmployeeDAO dao=(EmployeeDAO)ac.getBean("edao");
 		
-		Employee e=new Employee(19, "dasun", 20000, "colombo");
+		Employee e=new Employee(13, "Monash", 90000, "colombo");
 		
 		boolean b=dao.addEmployee(e);
 		
@@ -26,6 +28,15 @@ public class Main {
 			System.out.println("Error");
 		}
 
+		
+		List<Employee> list=dao.getAllEmployees();
+		System.out.println("-------------------Employees list-------------");
+		
+		for (Employee employee : list) {
+			System.out.println(employee);
+		}
+		
+		
 	}
 	
 	
